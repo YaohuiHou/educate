@@ -287,6 +287,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var _default = _vue.default.extend({
   data: function data() {
     return {
+      optionid: 0,
       showSwiperImgs: false,
       swiperIndex: 0,
       cookie: "",
@@ -314,15 +315,26 @@ var _default = _vue.default.extend({
   onLoad: function onLoad(option) {
     if (option.id) {
       this.getHomeList(option.id);
-    }
+      this.optionid = option.id;
+    } // wx.showShareMenu({
+    //   withShareTicket: true,
+    //   menus: ['shareAppMessage', 'shareTimeline']
+    // })
+
   },
   onShareAppMessage: function onShareAppMessage(res) {
     return {
       "title": this.rankData.name,
-      "path": "/pages/detail/detail",
+      "path": "/pages/detail/detail?id=" + this.optionid,
       "content": this.rankData.introduction,
       "desc": this.rankData.introduction,
       'imageUrl': this.rankData.photo
+    };
+  },
+  onShareTimeline: function onShareTimeline() {
+    return {
+      "title": this.rankData.name,
+      query: 'id=' + this.optionid
     };
   },
   methods: {
@@ -339,10 +351,10 @@ var _default = _vue.default.extend({
 
       if (!item.poi_type == "article" && type == 'poi') return;
       var urls = {
-        poi: '/pages/place/poi/poi',
-        city: '/pages/place/city/city',
-        country: '/pages/place/country/country',
-        biu: '/pages/post/post'
+        poi: 'pages/place/poi/poi',
+        city: 'pages/place/city/city',
+        country: 'pages/place/country/country',
+        biu: 'pages/post/post'
       };
       var path = '';
       var obj = {};
@@ -355,31 +367,19 @@ var _default = _vue.default.extend({
         obj.id = item.id;
       }
 
+      console.log(path); // this.openOtherApp('ttc02ab6975f004458',path+'?id='+item.id,obj)
+      // return;
+
       uni.getSystemInfo({
         success: function success(res) {
           // 头条  宿主APP名称
           if (res.appName) {
-            _this.openOtherApp('ttc02ab6975f004458', path, obj);
+            _this.openOtherApp('ttc02ab6975f004458', path + '?id=' + item.id, obj);
           } else if (res.host) {
             // 百度  宿主平台
-            // let data = {
-            //   name: item.chinesename,
-            //   id: item.id,
-            //   id_text: item.id_text,
-            //   introduction: item.introduction,
-            //   photo: encodeURIComponent(item.photo_list[0].url),
-            //   url: encodeURIComponent(item.url)
-            // }
-            // // 打开webview
-            // uni.navigateTo({
-            //     url: '../poi/poi?data='+JSON.stringify(data),
-            //     animationType: 'pop-in',
-            //     animationDuration: 200
-            // });
-            // this.openOtherApp('19879267',path,obj)
             uni.navigateToMiniProgram({
               appKey: 'xTfjwxtrmbmKItoKXN7neMtuZUOGd6X8',
-              path: path + '?id=' + item.id,
+              path: '/' + path + '?id=' + item.id,
               extraData: obj,
               success: function success(res) {
                 // 打开成功
@@ -388,7 +388,7 @@ var _default = _vue.default.extend({
             });
           } else {
             // 微信
-            _this.openOtherApp('wx19526333e900a842', path, obj);
+            _this.openOtherApp('wx19526333e900a842', path + '?id=' + item.id, obj);
           }
         }
       });

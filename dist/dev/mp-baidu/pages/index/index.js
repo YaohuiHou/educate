@@ -177,13 +177,51 @@ var _default = _vue.default.extend({
       indicatorDots: true,
       autoplay: true,
       interval: 2000,
-      duration: 700,
+      duration: 1000,
       activeColor: '#fff',
-      swiperColor: 'rgba(255,255,255,.4)'
+      swiperColor: 'rgba(255,255,255,.4)',
+      urlcan: "",
+      addFix: false,
+      scrollTop: 0,
+      tabs: [{
+        name: '全部',
+        tag: -1,
+        select: true
+      }, {
+        name: '国内',
+        tag: 2,
+        select: false
+      }, {
+        name: '境外',
+        tag: 3,
+        select: false
+      }, {
+        name: '必吃榜',
+        tag: 7,
+        select: false
+      }, {
+        name: '暑假推荐',
+        tag: 5,
+        select: false
+      }, {
+        name: '主题游',
+        tag: 12,
+        select: false
+      }]
     };
   },
   onLoad: function onLoad() {
-    this.getHomeList();
+    var _this = this;
+
+    this.getHomeList(); // wx.showShareMenu({
+    //   withShareTicket: true,
+    //   menus: ['shareAppMessage', 'shareTimeline']
+    // })
+
+    var query = uni.createSelectorQuery().in(this);
+    query.select('#board').boundingClientRect(function (data) {
+      _this.scrollTop = data.top;
+    }).exec();
   },
   onShareAppMessage: function onShareAppMessage(res) {
     return {
@@ -193,17 +231,58 @@ var _default = _vue.default.extend({
       desc: "一起发现最世界，Mark你走过的山水，为你的远方打榜！"
     };
   },
+  onShareTimeline: function onShareTimeline() {
+    return {
+      "title": this.rankData.name,
+      query: ''
+    };
+  },
   // 下拉刷新
   onPullDownRefresh: function onPullDownRefresh() {
     this.list = [];
     this.page = 2;
     this.getHomeList();
   },
-  // 滚动加载
-  onReachBottom: function onReachBottom() {
-    this.getList();
-  },
   methods: {
+    scrolltoupperFun: function scrolltoupperFun(event) {
+      if (event.target.scrollTop >= this.scrollTop) {
+        this.addFix = true;
+      } else {
+        this.addFix = false;
+      }
+    },
+    changeTab: function changeTab(tag, i) {
+      var obj = "";
+
+      if (tag > 0) {
+        this.urlcan = "&tag_key=".concat(tag);
+        this.list = [];
+        this.page = 1;
+        this.getList(obj);
+      } else {
+        // globalFun.ajax("/rank/api/fp/get", "get").then(res => {
+        //   if (res.code == 0) {
+        //     this.list = res.data.ranklist.list;
+        //     this.page = 2;
+        //   }
+        // });
+        this.getHomeList();
+      }
+
+      this.tabs.map(function (item) {
+        item.select = false;
+        return item;
+      });
+      this.tabs[i].select = true;
+      this.selectIndex = i;
+    },
+    gotoUrl: function gotoUrl(item) {
+      uni.navigateTo({
+        url: '../poi/poi?url=' + encodeURIComponent(item.link),
+        animationType: 'pop-in',
+        animationDuration: 200
+      });
+    },
     gotolink: function gotolink(id) {
       uni.navigateTo({
         url: '../detail/detail?id=' + id,
@@ -213,13 +292,12 @@ var _default = _vue.default.extend({
     },
     // 加载首页
     getHomeList: function getHomeList() {
-      var _this = this;
+      var _this2 = this;
 
       _global.default.ajax('/rank/api/fp/get', 'get', {}).then(function (res) {
         if (res.data.code == 0) {
-          _this.swiperList = res.data.data.focuslist.list; // let arr = res.data.data.ranklist.list
-
-          _this.list = _this.listChange(res.data.data.ranklist.list);
+          _this2.swiperList = res.data.data.focuslist.list;
+          _this2.list = _this2.listChange(res.data.data.ranklist.list);
         }
       });
     },
@@ -243,22 +321,22 @@ var _default = _vue.default.extend({
     },
     // 获取列表
     getList: function getList() {
-      var _this2 = this;
+      var _this3 = this;
 
       if (this.disableList) return;
       this.disableList = true;
 
-      _global.default.ajax("/rank/api/ranklist/get?sn=10&cn=".concat(this.page, "&status=2,1"), "get", {}).then(function (res) {
-        _this2.disableList = false;
+      _global.default.ajax("/rank/api/ranklist/get?sn=10&cn=".concat(this.page).concat(this.urlcan, "&status=2,1"), "get", {}).then(function (res) {
+        _this3.disableList = false;
 
         if (res.data.code == 0) {
-          _this2.list = [].concat(_toConsumableArray(_this2.list), _toConsumableArray(_this2.listChange(res.data.data.list)));
+          _this3.list = [].concat(_toConsumableArray(_this3.list), _toConsumableArray(_this3.listChange(res.data.data.list)));
 
-          if (_this2.list.length >= res.data.data.tn) {
-            _this2.loadList = false;
-            _this2.disableList = true;
+          if (_this3.list.length >= res.data.data.tn) {
+            _this3.loadList = false;
+            _this3.disableList = true;
           } else {
-            _this2.page += 1;
+            _this3.page += 1;
           }
         }
       });

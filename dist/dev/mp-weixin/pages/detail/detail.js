@@ -316,7 +316,8 @@ var _default = _vue.default.extend({
     if (option.id) {
       this.getHomeList(option.id);
       this.optionid = option.id;
-    }
+    } // 微信下打开
+
 
     wx.showShareMenu({
       withShareTicket: true,
@@ -368,7 +369,8 @@ var _default = _vue.default.extend({
         obj.id = item.id;
       }
 
-      console.log(path); // this.openOtherApp('ttc02ab6975f004458',path+'?id='+item.id,obj)
+      console.log(path); // 头条下
+      // this.openOtherApp('ttc02ab6975f004458',path+'?id='+item.id,obj)
       // return;
 
       uni.getSystemInfo({

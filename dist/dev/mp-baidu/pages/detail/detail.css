@@ -308,11 +308,12 @@
   width: 36rpx;
   height: 36rpx;
   border-radius: 50%;
-  overflow: hidden;
   margin-right: 10rpx;
 }
 .bius-list .bius-view .ul .li .info .user .span .img {
-  height: 100%;
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 50%;
 }
 .bius-list .bius-view .ul .li .info .user .em {
   font-size: 22rpx;

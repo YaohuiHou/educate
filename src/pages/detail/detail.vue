@@ -178,6 +178,7 @@
         this.getHomeList(option.id)
         this.optionid = option.id
       }
+      // 微信下打开
       wx.showShareMenu({
         withShareTicket: true,
         menus: ['shareAppMessage', 'shareTimeline']
@@ -226,6 +227,7 @@
         }
         console.log(path);
         
+        // 头条下
         // this.openOtherApp('ttc02ab6975f004458',path+'?id='+item.id,obj)
         // return;
         uni.getSystemInfo({

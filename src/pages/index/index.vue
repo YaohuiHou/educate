@@ -1,67 +1,90 @@
 <template>
-	<view class="home">
-    <view class="banner" v-if="swiperList">
-      <swiper class="swiper"
-        :indicator-dots="indicatorDots"
-        :autoplay="autoplay"
-        :interval="interval"
-        :duration="duration"
-        :indicator-color="swiperColor"
-        :indicator-active-color="activeColor"
-      >
-        <swiper-item v-for="item in swiperList" :key="item.img_head">
-            <view class="swiper-item" @click="gotoUrl(item)">
-              <image :src="item.img_head"></image>
-            </view>
-        </swiper-item>
-      </swiper>
-    </view>
-    <!-- 列表 -->
-    <view class="board">
-      <view class="li" v-for="item in list" :key="item.id">
-        <view class="a" @click="gotolink(item.id)">
-          <view class="figure">
-            <view class="i ibefore"
-            v-bind:style="{ backgroundImage: `linear-gradient(180deg, transparent 40%, ${item.color ? item.color :'rgba(0,0,0,.3)'})`}"
-            ></view>
-            <image
-              class="img"
-              mode="widthFix"
-              :lazy-load="true"
-              :src="item.photo">
-            </image>
-            <view class="info">
-              <view class="span">
-                <view class="imgs" v-for="i in item.poiListArr" :key="'imgs'+i">
-                  <image class="img" mode="heightFix" :src="topList[i]"></image>
-                </view>
+	<scroll-view
+    class="home-view"
+    scroll-y="true"
+    scroll-anchoring="true"
+    upper-threshold="50"
+    lower-threshold="100"
+    @scroll="scrolltoupperFun"
+    @scrolltolower="getList"
+  >
+    <view class="home">
+      <view class="banner" v-if="swiperList">
+        <swiper class="swiper"
+          :indicator-dots="indicatorDots"
+          :autoplay="autoplay"
+          :interval="interval"
+          :duration="duration"
+          :indicator-color="swiperColor"
+          :indicator-active-color="activeColor"
+        >
+          <swiper-item v-for="item in swiperList" :key="item.img_head">
+              <view class="swiper-item">
+                <image :src="item.img_head"></image>
               </view>
-              <view class="h2">{{item.name}}</view>
-              <view class="p" v-if="item.introduction_show == 1">{{item.introduction}}</view>
-            </view>
+          </swiper-item>
+        </swiper>
+      </view>
+      <!-- tab -->
+      <view class="tabs-view" id="tab_view">
+          <view :class="['tabs',addFix ? 'tab-fixed':'']">
+            <text
+              v-for="( item, i ) in tabs"
+              :key="item.name"
+              :class="['span',item.select ?'selected':'']"
+              @click="changeTab(item.tag, i)"
+            >
+            <text class="i">{{item.name}}</text>
+            </text>
           </view>
-          <view class="list">
-            <view class="img" v-for="img in item.poi_list" :key="img.id" >
-              <view class="span">
-                <image
-                  class="img"
-                  :lazy-load="true"
-                  :src="img.photo"
-                  mode="aspectFill"
-                ></image>
+      </view>
+      <!-- 列表 -->
+      <view class="board" id="board">
+        <view class="li" v-for="item in list" :key="item.id">
+          <view class="a" @click="gotolink(item.id)">
+            <view class="figure">
+              <view class="i ibefore"
+              v-bind:style="{ backgroundImage: `linear-gradient(180deg, transparent 40%, ${item.color ? item.color :'rgba(0,0,0,.3)'})`}"
+              ></view>
+              <image
+                class="img"
+                mode="widthFix"
+                :lazy-load="true"
+                :src="item.photo">
+              </image>
+              <view class="info">
+                <view class="span">
+                  <view class="imgs" v-for="i in item.poiListArr" :key="'imgs'+i">
+                    <image class="img" mode="heightFix" :src="topList[i]"></image>
+                  </view>
+                </view>
+                <view class="h2">{{item.name}}</view>
+                <view class="p" v-if="item.introduction_show == 1">{{item.introduction}}</view>
               </view>
-              <view class="p">{{img.chinesename}}</view>
             </view>
-            <em class="icon"></em>
+            <view class="list">
+              <view class="img" v-for="img in item.poi_list" :key="img.id" >
+                <view class="span">
+                  <image
+                    class="img"
+                    :lazy-load="true"
+                    :src="img.photo"
+                    mode="aspectFill"
+                  ></image>
+                </view>
+                <view class="p">{{img.chinesename}}</view>
+              </view>
+              <em class="icon"></em>
+            </view>
           </view>
         </view>
       </view>
+      <view class="footer">
+        <view class="p" v-if="loadList">正在加载...</view>
+        <view v-else class="goback p" @click="gotoTop">😆已经到底了，回到顶部</view>
+      </view>
     </view>
-    <view class="footer">
-      <view class="p" v-if="loadList">正在加载...</view>
-      <view v-else class="goback p" @click="gotoTop">😆已经到底了，回到顶部</view>
-    </view>
-	</view>
+	</scroll-view>
 </template>
 
 <script>
@@ -92,11 +115,53 @@
         interval: 2000,
         duration: 1000,
         activeColor: '#fff',
-        swiperColor: 'rgba(255,255,255,.4)'
+        swiperColor: 'rgba(255,255,255,.4)',
+        urlcan: "",
+        addFix: false,
+        scrollTop: 0,
+        tabs: [
+          {
+            name:'全部',
+            tag: -1,
+            select: true
+          },
+          {
+            name:'国内',
+            tag: 2,
+            select: false
+          },
+          {
+            name:'境外',
+            tag: 3,
+            select: false
+          },
+          {
+            name:'必吃榜',
+            tag: 7,
+            select: false
+          },
+          {
+            name:'暑假推荐',
+            tag: 5,
+            select: false
+          },
+          {
+            name:'主题游',
+            tag: 12,
+            select: false
+          }
+        ]
 			}
 		},
 		onLoad() {
       this.getHomeList()
+
+      uni.createSelectorQuery().select('#board').boundingClientRect(data => {
+        this.scrollTop = data.top
+        console.log(data);
+      }).exec();
+      
+      // 微信下打开
       wx.showShareMenu({
         withShareTicket: true,
         menus: ['shareAppMessage', 'shareTimeline']
@@ -122,11 +187,40 @@
       this.page = 2
       this.getHomeList()
     },
-    // 滚动加载
-    onReachBottom(){
-      this.getList();
-    },
 		methods: {
+      scrolltoupperFun(event){
+        if(event.target.scrollTop >= this.scrollTop){
+          this.addFix = true
+        }else{
+          this.addFix = false
+        }
+      },
+      changeTab(tag, i) {
+        let obj = "";
+        if (tag > 0) {
+          this.urlcan = `&tag_key=${tag}`;
+
+          this.list = [];
+          this.page = 1;
+          this.getList(obj);
+        } else {
+          // globalFun.ajax("/rank/api/fp/get", "get").then(res => {
+          //   if (res.code == 0) {
+          //     this.list = res.data.ranklist.list;
+          //     this.page = 2;
+          //   }
+          // });
+          this.getHomeList()
+        }
+
+        this.tabs.map(item => {
+          item.select = false;
+          return item;
+        });
+
+        this.tabs[i].select = true;
+        this.selectIndex = i;
+      },
       gotoUrl(item){
         uni.navigateTo({
             url: '../poi/poi?url='+encodeURIComponent(item.link),
@@ -146,10 +240,6 @@
         globalFun.ajax('/rank/api/fp/get','get',{}).then(res=>{
           if(res.data.code == 0){
             this.swiperList = res.data.data.focuslist.list
-            console.log(this.swiperList);
-            
-            // let arr = res.data.data.ranklist.list
-            
             this.list = this.listChange(res.data.data.ranklist.list)
           }
         })
@@ -178,7 +268,7 @@
         if (this.disableList) return;
           this.disableList = true;
           globalFun
-            .ajax(`/rank/api/ranklist/get?sn=10&cn=${this.page}&status=2,1`, "get",{})
+            .ajax(`/rank/api/ranklist/get?sn=10&cn=${this.page}${this.urlcan}&status=2,1`, "get",{})
             .then(res => {
               this.disableList = false;
               if (res.data.code == 0) {
@@ -200,13 +290,18 @@
 image{
   will-change: transform
 }
+.home-view{
+  height: 100vh;
+  overflow: auto;
+  overflow-anchor: auto;
+}
 .home{
-  padding: 40rpx 18rpx 0 18rpx;
+  padding: 0 18rpx 0 18rpx;
   background-image: linear-gradient( #fff, #F5F5F5);
   .banner{
     background:#F5F5F5;
     border-radius: 16rpx;
-    margin-bottom: 40rpx;
+    padding-top: 40rpx;
     .swiper{
       height: 280rpx;
     }
@@ -220,7 +315,65 @@ image{
       }
     }
   }
+  .tabs-view {
+    width: 100%;
+    height: 52rpx;
+    padding-top: 30rpx;
+  }
+
+  .tabs {
+    display: flex;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    height: 52rpx;
+    scrollbar-width: none; /* firefox */
+
+    &::-webkit-scrollbar {
+      display: none; /* Chrome Safari */
+    }
+
+    &.tab-fixed {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 88rpx;
+      padding: 18rpx;
+      width: 100%;
+      box-sizing: border-box;
+      z-index: 10;
+      background: #fff;
+      box-shadow: 0 0 10rpx 1rpx #333;
+    }
+
+    .span {
+      flex-shrink: 0;
+      padding: 0 26rpx;
+      line-height: 48rpx;
+      height: 48rpx;
+      border-radius: 8rpx;
+      border: 1rpx solid #D8D8D8;
+      margin-right: 18rpx;
+      display: flex;
+      align-items: center;
+      color: #000;
+
+      .i {
+        font-size: 26rpx;
+        font-style: normal;
+      }
+
+      &.selected {
+        border: none;
+        background-image: linear-gradient(30deg, #15DB91, #06CCC7);
+        color: #fff;
+        line-height: 48rpx;
+      }
+    }
+  }
   .board {
+    padding-top: 40rpx;
     .li {
       margin-bottom: 40rpx;
       border-radius: 16rpx;

@@ -1,1 +1,1 @@
-<view><web-view webview-styles="{{webviewStyles}}" src="{{url}}"></web-view></view>
+<view class="poi-view data-v-8a84c6a0"><web-view src="{{url}}" class="data-v-8a84c6a0"></web-view></view>

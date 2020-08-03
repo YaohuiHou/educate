@@ -5,12 +5,9 @@
     "condition": {},
     "host": "baiduboxapp",
     "libVersion": "",
-    "preview": {
-        "packageId": 501660
-    },
     "projectname": "zworldranking",
     "publish": {
-        "version": "1.0.3"
+        "version": "1.0.4"
     },
     "setting": {
         "urlCheck": true
