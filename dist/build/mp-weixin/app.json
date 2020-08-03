@@ -1,0 +1,19 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/detail/detail",
+    "pages/poi/poi"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "最世界榜单",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "navigateToMiniProgramAppIdList": [
+    "wx19526333e900a842"
+  ],
+  "usingComponents": {},
+  "sitemapLocation": "sitemap.json"
+}

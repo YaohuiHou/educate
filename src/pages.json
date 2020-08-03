@@ -1,0 +1,28 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "最世界榜单"
+			}
+		},
+    {
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "最世界榜单详情页"
+			}
+		},
+    {
+			"path": "pages/poi/poi",
+			"style": {
+				"navigationBarTitleText": "穷游网"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "最世界榜单",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	}
+}
