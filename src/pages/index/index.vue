@@ -18,7 +18,7 @@
           :indicator-color="swiperColor"
           :indicator-active-color="activeColor"
         >
-          <swiper-item v-for="item in swiperList" :key="item.img_head">
+          <swiper-item v-for="item in swiperList" :key="item.img_head"  @click="gotoUrl(item.link)">
               <view class="swiper-item">
                 <image :src="item.img_head"></image>
               </view>
@@ -222,11 +222,15 @@
         this.selectIndex = i;
       },
       gotoUrl(item){
-        uni.navigateTo({
-            url: '../poi/poi?url='+encodeURIComponent(item.link),
-            animationType: 'pop-in',
-            animationDuration: 200
-        });
+        if(item.indexOf('zworldrankingdetail') != -1){
+          this.gotolink(item.split('?id=')[1])
+        }else{
+        //   uni.navigateTo({
+        //     url: '../poi/poi?url='+encodeURIComponent(item),
+        //     animationType: 'pop-in',
+        //     animationDuration: 200
+        // });
+        }
       },
       gotolink(id){
         uni.navigateTo({

@@ -278,11 +278,14 @@ var _default = _vue.default.extend({
       this.selectIndex = i;
     },
     gotoUrl: function gotoUrl(item) {
-      uni.navigateTo({
-        url: '../poi/poi?url=' + encodeURIComponent(item.link),
-        animationType: 'pop-in',
-        animationDuration: 200
-      });
+      if (item.indexOf('zworldrankingdetail') != -1) {
+        this.gotolink(item.split('?id=')[1]);
+      } else {//   uni.navigateTo({
+        //     url: '../poi/poi?url='+encodeURIComponent(item),
+        //     animationType: 'pop-in',
+        //     animationDuration: 200
+        // });
+      }
     },
     gotolink: function gotolink(id) {
       uni.navigateTo({
