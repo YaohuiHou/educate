@@ -179,10 +179,10 @@
         this.optionid = option.id
       }
       // 微信下打开
-      wx.showShareMenu({
-        withShareTicket: true,
-        menus: ['shareAppMessage', 'shareTimeline']
-      })
+      // wx.showShareMenu({
+      //   withShareTicket: true,
+      //   menus: ['shareAppMessage', 'shareTimeline']
+      // })
 		},
     onShareAppMessage(res) {
       return {

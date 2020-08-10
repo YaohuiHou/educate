@@ -162,10 +162,10 @@
       }).exec();
       
       // 微信下打开
-      wx.showShareMenu({
-        withShareTicket: true,
-        menus: ['shareAppMessage', 'shareTimeline']
-      })
+      // wx.showShareMenu({
+      //   withShareTicket: true,
+      //   menus: ['shareAppMessage', 'shareTimeline']
+      // })
 		},
     onShareAppMessage(res) {
       return {
@@ -407,6 +407,7 @@ image{
             width: 100%;
             height: 100%;
             z-index: 1;
+            transform: translate3d(0,0,0);
           }
           >.img{
             width: 100%;
@@ -422,6 +423,7 @@ image{
             box-sizing: border-box;
             padding: 0 30rpx 36rpx;
             z-index: 1;
+            transform: translate3d(0,0,0);
 
             .span {
               display: flex;
