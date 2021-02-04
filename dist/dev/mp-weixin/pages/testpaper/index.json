@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "考试",
+  "usingComponents": {
+    "u-icon": "/uview-ui/components/u-icon/u-icon",
+    "u-count-down": "/uview-ui/components/u-count-down/u-count-down",
+    "u-count-to": "/uview-ui/components/u-count-to/u-count-to",
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "u-popup": "/uview-ui/components/u-popup/u-popup"
+  }
+}

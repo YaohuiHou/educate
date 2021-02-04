@@ -1,0 +1,16 @@
+.password {
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 30rpx;
+}
+.password .form {
+  width: 100%;
+}
+.password .form input {
+  color: #000;
+}
+.password .button {
+  display: block;
+  width: 100%;
+}
+

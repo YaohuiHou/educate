@@ -1,0 +1,17 @@
+.detail {
+  padding: 50rpx 20rpx;
+}
+.detail .h1 {
+  line-height: 56rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #000;
+}
+.detail .time {
+  margin-bottom: 20rpx;
+  font-size: 20rpx;
+  text-align: right;
+  color: #999;
+  line-height: 40rpx;
+}
+

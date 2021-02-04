@@ -1,27 +1,144 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
+	"easycom": {
+		"^u-(.*)": "@/uview-ui/components/u-$1/u-$1.vue"
+	},
+	"pages": [
+    {
+      "path": "pages/testpaper/index",
+			"style": {
+				"navigationBarTitleText": "考试"
+			}
+    },
+    {
+      "path": "pages/exampaper/index",
+			"style": {
+				"navigationBarTitleText": "考试介绍"
+			}
+    },
+    {
+			"path": "pages/course/index",
+			"style": {
+				"navigationBarTitleText": "辅导播放"
+			}
+		},
+    {
+			"path": "pages/tutorship/index",
+			"style": {
+				"navigationBarTitleText": "辅导回放",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+		},
+    {
+			"path": "pages/daily/index",
+			"style": {
+				"navigationBarTitleText": "每日一练",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+		},
+    {
+			"path": "pages/knowledge/index",
+			"style": {
+				"navigationBarTitleText": "知识点练习",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+		},
+    {
+			"path": "pages/exam/index",
+			"style": {
+				"navigationBarTitleText": "模拟考试",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+		},
+    {
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "最世界榜单"
+				"navigationBarTitleText": "首页"
 			}
 		},
     {
-			"path": "pages/detail/detail",
+			"path": "pages/me/index",
 			"style": {
-				"navigationBarTitleText": "最世界榜单详情页"
+				"navigationBarTitleText": "个人中心"
 			}
 		},
     {
-			"path": "pages/poi/poi",
+			"path": "pages/login/index",
 			"style": {
-				"navigationBarTitleText": "穷游网"
+				"navigationBarTitleText": "登录"
 			}
-		}
+		},
+    {
+      "path": "pages/userinforevise/index",
+			"style": {
+				"navigationBarTitleText": "信息修改"
+			}
+    },
+    {
+      "path": "pages/userinfo/index",
+			"style": {
+				"navigationBarTitleText": "用户信息"
+			}
+    },
+    {
+      "path": "pages/favorites/index",
+			"style": {
+				"navigationBarTitleText": "集合"
+			}
+    },
+    {
+      "path": "pages/learningProgress/index",
+			"style": {
+				"navigationBarTitleText": "学习进度"
+			}
+    },
+    {
+			"path": "pages/news/index",
+			"style": {
+				"navigationBarTitleText": "资讯列表页",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+		},
+    {
+			"path": "pages/newDetail/index",
+			"style": {
+				"navigationBarTitleText": "资讯详情页"
+			}
+		},
+    {
+      "path": "pages/subject/index",
+			"style": {
+				"navigationBarTitleText": "科目练习",
+        "navigationStyle": "custom" ,
+			  "navigationBarTextStyle": "white"
+			}
+    }
 	],
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#4d7dfe",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [{
+					"iconPath": "static/uview/example/template.png",
+					"selectedIconPath": "static/uview/example/template_select.png",
+					"text": "首页",
+					"pagePath": "pages/index/index"
+				},
+				{
+					"iconPath": "static/uview/example/me.png",
+					"selectedIconPath": "static/uview/example/meed.png",
+					"text": "我的",
+					"pagePath": "pages/me/index"
+				}]
+  },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "最世界榜单",
+		"navigationBarTitleText": "网络统考",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	}

@@ -1,0 +1,77 @@
+.exampaper.data-v-3ad9d4b2 {
+  padding: 40rpx 20rpx;
+}
+.exampaper .title.data-v-3ad9d4b2 {
+  line-height: 60rpx;
+  font-size: 40rpx;
+  color: #333;
+  padding: 20rpx 0;
+  text-align: center;
+}
+.exampaper .ul.data-v-3ad9d4b2 {
+  padding: 40rpx;
+  width: 100%;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.exampaper .ul .li.data-v-3ad9d4b2 {
+  width: 50%;
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+.exampaper .ul .li text.data-v-3ad9d4b2 {
+  color: #333;
+}
+.exampaper .btns.data-v-3ad9d4b2 {
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  margin-bottom: 40rpx;
+}
+.exampaper .btns .btn.data-v-3ad9d4b2 {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+}
+.exampaper .summary.data-v-3ad9d4b2 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  color: #333;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+  border-bottom: 1rpx solid #eee;
+}
+.exampaper .summary .h1.data-v-3ad9d4b2 {
+  line-height: 60rpx;
+  font-size: 28rpx;
+  color: #333;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.exampaper .summary .p.data-v-3ad9d4b2 {
+  line-height: 30rpx;
+  font-size: 22rpx;
+  color: #999;
+  padding-bottom: 20rpx;
+  padding-top: 10rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+

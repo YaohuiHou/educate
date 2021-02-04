@@ -1,0 +1,23 @@
+.course .sticky {
+  width: 100%;
+}
+.course .sticky video {
+  width: 100%;
+}
+.course .detail {
+  padding: 30rpx 20rpx;
+}
+.course .detail .h1 {
+  line-height: 56rpx;
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #000;
+}
+.course .detail .time {
+  margin-bottom: 20rpx;
+  font-size: 20rpx;
+  text-align: right;
+  color: #999;
+  line-height: 40rpx;
+}
+

@@ -1,19 +1,49 @@
 {
   "pages": [
+    "pages/testpaper/index",
+    "pages/exampaper/index",
+    "pages/course/index",
+    "pages/tutorship/index",
+    "pages/daily/index",
+    "pages/knowledge/index",
+    "pages/exam/index",
     "pages/index/index",
-    "pages/detail/detail",
-    "pages/poi/poi"
+    "pages/me/index",
+    "pages/login/index",
+    "pages/userinforevise/index",
+    "pages/userinfo/index",
+    "pages/favorites/index",
+    "pages/learningProgress/index",
+    "pages/news/index",
+    "pages/newDetail/index",
+    "pages/subject/index"
   ],
   "subPackages": [],
   "window": {
     "navigationBarTextStyle": "black",
-    "navigationBarTitleText": "最世界榜单",
+    "navigationBarTitleText": "网络统考",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
   },
-  "navigateToMiniProgramAppIdList": [
-    "wx19526333e900a842"
-  ],
-  "usingComponents": {},
-  "sitemapLocation": "sitemap.json"
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#4d7dfe",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "iconPath": "static/uview/example/template.png",
+        "selectedIconPath": "static/uview/example/template_select.png",
+        "text": "首页",
+        "pagePath": "pages/index/index"
+      },
+      {
+        "iconPath": "static/uview/example/me.png",
+        "selectedIconPath": "static/uview/example/meed.png",
+        "text": "我的",
+        "pagePath": "pages/me/index"
+      }
+    ]
+  },
+  "usingComponents": {}
 }

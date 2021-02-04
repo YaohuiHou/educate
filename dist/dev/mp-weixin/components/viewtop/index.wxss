@@ -1,0 +1,43 @@
+.list.data-v-fc69f030 {
+  position: relative;
+  height: 100vh;
+  overflow: auto;
+  overflow-anchor: auto;
+}
+.list .sticky.data-v-fc69f030 {
+  background: #fff;
+  box-sizing: border-box;
+  padding: 10rpx 20rpx;
+}
+.list .bottom-text.data-v-fc69f030 {
+  height: 80rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.list .bottom-text .text.data-v-fc69f030 {
+  font-size: 30rpx;
+  color: #999;
+  margin-left: 12rpx;
+}
+.slot-wrap.data-v-fc69f030 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.slot-wrap .arrow-down.data-v-fc69f030 {
+  margin-left: 10rpx;
+}
+

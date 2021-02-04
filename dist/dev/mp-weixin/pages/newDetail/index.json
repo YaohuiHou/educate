@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "资讯详情页",
+  "usingComponents": {
+    "u-parse": "/uview-ui/components/u-parse/u-parse"
+  }
+}

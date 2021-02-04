@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "科目练习",
+  "usingComponents": {
+    "u-button": "/uview-ui/components/u-button/u-button"
+  }
+}

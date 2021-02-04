@@ -1,0 +1,40 @@
+.subject {
+  height: 100vh;
+}
+.subject .btns {
+  height: 80vh;
+  box-sizing: border-box;
+  padding: 50rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+}
+.subject .btn {
+  width: 100%;
+  margin-bottom: 80rpx;
+}
+.slot-wrap {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+          flex: 1;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.slot-wrap .arrow-down {
+  margin-left: 10rpx;
+}
+

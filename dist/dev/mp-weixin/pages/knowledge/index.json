@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "知识点练习",
+  "navigationStyle": "custom",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "u-button": "/uview-ui/components/u-button/u-button",
+    "view-top": "/components/viewtop/index"
+  }
+}

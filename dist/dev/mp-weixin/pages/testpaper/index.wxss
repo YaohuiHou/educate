@@ -1,0 +1,189 @@
+.testpaper {
+  padding-bottom: 80rpx;
+}
+.testpaper .header {
+  height: 80rpx;
+  padding: 10rpx 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  background-color: #f5f5f5;
+}
+.testpaper .header .number {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  line-height: 36rpx;
+  font-size: 24rpx;
+  color: #666;
+}
+.testpaper .header .timer {
+  font-size: 24rpx;
+  color: #666;
+}
+.testpaper .header .timer .icon {
+  margin-right: 6rpx;
+}
+.testpaper .header .count {
+  font-size: 24rpx;
+  color: #333;
+}
+.testpaper .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100rpx;
+  background: #fff;
+  box-shadow: 0 1px 10px 1px #666;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: justify;
+  -webkit-justify-content: space-between;
+          justify-content: space-between;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.testpaper .footer .center {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+  padding: 0 20rpx;
+}
+.testpaper .footer .center .btn {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+          flex-direction: column;
+  padding: 0 20rpx;
+  text-align: center;
+}
+.testpaper .footer .center .btn .icon {
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  text-align: center;
+}
+.testpaper .footer .center .btn text {
+  display: block;
+  font-size: 20rpx;
+  color: #666;
+  line-height: 30rpx;
+  padding-top: 10rpx;
+}
+.testpaper .popup {
+  position: relative;
+  height: 100vh;
+  box-sizing: border-box;
+  padding: 100rpx 40rpx 80rpx;
+}
+.testpaper .popup .ol {
+  height: 100%;
+  overflow: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+          flex-wrap: wrap;
+}
+.testpaper .popup .ol .li {
+  margin: 0 20rpx 20rpx 0;
+  width: 64rpx;
+  height: 64rpx;
+  text-align: center;
+  line-height: 64rpx;
+  font-size: 28rpx;
+  color: #333;
+  border: 1rpx solid #999;
+  border-radius: 50%;
+  background: #fff;
+}
+.testpaper .popup .ol .li.error {
+  border-color: #fa3534;
+  color: #fa3534;
+  background: #fef0f0;
+}
+.testpaper .popup .ol .li.success {
+  border-color: #19be6b;
+  color: #19be6b;
+  background: #dbf1e1;
+}
+.testpaper .popup .ol .li.primary {
+  border-color: #2979ff;
+  color: #2979ff;
+  background: #ecf5ff;
+}
+.testpaper .popup .points {
+  position: absolute;
+  left: 0;
+  bottom: 20rpx;
+  width: 100%;
+  height: 60rpx;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+          justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+          align-items: center;
+}
+.testpaper .popup .points .point {
+  position: relative;
+  padding: 0 20rpx 0 40rpx;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 30rpx;
+}
+.testpaper .popup .points .point:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30rpx;
+  height: 30rpx;
+  box-sizing: border-box;
+  border: 1rpx solid #999;
+  border-radius: 50%;
+  background: #fff;
+}
+.testpaper .popup .points .point.error:before {
+  border-color: #fa3534;
+  color: #fa3534;
+  background: #fef0f0;
+}
+.testpaper .popup .points .point.success:before {
+  border-color: #19be6b;
+  color: #19be6b;
+  background: #dbf1e1;
+}
+.testpaper .popup .points .point.primary:before {
+  border-color: #2979ff;
+  color: #2979ff;
+  background: #ecf5ff;
+}
+

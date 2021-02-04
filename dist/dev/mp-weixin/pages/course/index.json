@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "辅导播放",
+  "usingComponents": {
+    "u-sticky": "/uview-ui/components/u-sticky/u-sticky",
+    "u-parse": "/uview-ui/components/u-parse/u-parse"
+  }
+}
