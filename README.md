@@ -1,6 +1,8 @@
 # educate
 
 uniAPP文档：https://uniapp.dcloud.io/
+uVieww文档：https://www.uviewui.com/
+考试系统小程序，考生端开发，使用uniAPP + uView UI库开发
 
 ## 安装
 
